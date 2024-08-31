@@ -43,7 +43,7 @@ I have used some external packages in order to ensure that the UI is visually ap
     | edit a task | ![edit a task](https://s11.gifyu.com/images/SooZR.gif)  | ![edit a task](https://s11.gifyu.com/images/SoofB.gif) |
     | delete a task | ![delete a task](https://s11.gifyu.com/images/SooZF.gif) | ![delete a task](https://s11.gifyu.com/images/SoofX.gif) | 
     | mark a task as completed | ![mark as completed](https://s11.gifyu.com/images/SooZ5.gif) | ![mark as completed](https://s11.gifyu.com/images/Soofe.gif)  
-    | mark a task as completed | ![mark as incompleted](https://s11.gifyu.com/images/SooZG.gif) | ![mark as incompleted](https://s11.gifyu.com/images/SooY3.gif)  
+    | mark a task as incompleted | ![mark as incompleted](https://s11.gifyu.com/images/SooZG.gif) | ![mark as incompleted](https://s11.gifyu.com/images/SooY3.gif)  
 * __Handling edge cases:__  
 I have forbidden adding a task with an empty title:  
 ![a task with empty title](https://s11.gifyu.com/images/SooaL.gif)  

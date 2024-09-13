@@ -2,13 +2,13 @@ A repository dedicated to the assigned tasks by Prokoders company.
 
 #### Task #1:
 Objective: Create a responsive settings screen using Flutter that mimics the provided design:  
-![](https://i.ibb.co/16Zz334/task-1.png)  
+<img src="https://i.ibb.co/16Zz334/task-1.png" width="300" align="center"/>  
 Requirements:  
 * Custom widgets: Utilize custom widgets to ensure reusability and clean code architecture. For instance, create custom widgets for the toggle buttons, text buttons, and section headers.  
 * Responsive design: Make sure the UI is responsive across different screen sizes. Consider using MediaQuery  
 
 Here is a sample output of the code:  
-![](https://i.ibb.co/QkX1pMK/task-1-sample-output.jpg)  
+<img src="https://i.ibb.co/QkX1pMK/task-1-sample-output.jpg" width="300" align="center"/>  
 #### Task #2:  
 Objective: Create a user interface using Flutter that includes a list displaying tasks, with the ability to add a new task, delete a task, and mark a task as completed or incompleted using `GetX` for state management.  
 Requirements:  
@@ -46,9 +46,9 @@ I have used some external packages in order to ensure that the UI is visually ap
     | mark a task as incompleted | ![mark as incompleted](https://s11.gifyu.com/images/SooZG.gif) | ![mark as incompleted](https://s11.gifyu.com/images/SooY3.gif)  
 * __Handling edge cases:__  
 I have forbidden adding a task with an empty title:  
-![a task with empty title](https://s11.gifyu.com/images/SooaL.gif)  
+<img src="https://s11.gifyu.com/images/SooaL.gif" width="300" align="center"/>  
 and the case of inputing the same title twice:  
-![input the same title twice](https://s11.gifyu.com/images/Soofx.gif)
+<img src="https://s11.gifyu.com/images/Soofx.gif" width="300" align="center"/>
 * __Events listening and auto UI updating:__  
 I have effectively implemeted `GetX` to ensure the UI updates whenever there is a change, see deleting a task example above.
 * __Clean, easy to edit, and reusable code:__  
@@ -76,12 +76,10 @@ Objective: Create a a Flutter app for managing notes using GetX and GetStorage.
 * Dark mode/light mode toggle:
     * Use GetX to implement a toggle button on the home screen to switch between dark mode and light mode.
     * The selected theme should be saved using GetStorage and automatically applied when the app is reopened.  
-
-__Note:__ Please send the APK and the Git link to Telegram.  
 ##### Key points in completing this task:  
 * I have encountered a problem, that when I add so many tasks, the ones in the bottom becomes covered with the floating action button. So I have solved this issue by animating the floating action button as:  
-![animated floating action button](https://s11.gifyu.com/images/S1BQW.gif)  
+<img src="https://s11.gifyu.com/images/S1BQW.gif" width="300" align="center"/>  
 * I tried to make the button that toggles the theme as visually appealing as I could:  
-![toggle theme button](https://s1.gifyu.com/images/S1BQ5.gif)  
+<img src="https://s1.gifyu.com/images/S1BQ5.gif" width="300" align="center"/>  
 * I have captilized the first letter of every sentence when inputting a task title or body:  
-![captilize letters](https://s1.gifyu.com/images/S1BQC.gif)
+<img src="https://s1.gifyu.com/images/S1BQC.gif" width="300" align="center"/>  

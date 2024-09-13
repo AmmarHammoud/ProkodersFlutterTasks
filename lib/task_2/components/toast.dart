@@ -3,11 +3,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 FToast fToast = FToast();
 
-showToast(
-    {required context,
-    required String text,
-    required Color color,
-    int duration = 3}) {
+showToast({
+  required context,
+  required String text,
+  required Color color,
+  int duration = 3,
+}) {
   fToast.init(context);
   Widget toast = Container(
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),

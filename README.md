@@ -53,3 +53,35 @@ and the case of inputing the same title twice:
 I have effectively implemeted `GetX` to ensure the UI updates whenever there is a change, see deleting a task example above.
 * __Clean, easy to edit, and reusable code:__  
 I have ensured writing a clean code that would facilitate the process of editing or changing in later time.  
+#### Task #3:  
+Objective: Create a a Flutter app for managing notes using GetX and GetStorage.  
+* Home Screen:  
+    * Dispaly a list of saved notes.
+    * Include a button to add a new note.
+    * Allow users to tap on any note to view or edit its details.
+    * Include a button to toggle between dark mode and light mode.
+* Add/Edit notes:  
+    * Provide a TextField for entering or editing the note title.
+    * Another TextField for entering the note content.
+    * A save button to either add the note to the list (if it's new) or update it (if it already exists).
+* Delete notes:
+    * Each note should have an option to delete it.
+    * Upon clicking the delted button, the note should be removed from the list and from GetStorage.
+* Using GetStorage:
+    * Save notes locally using GetStorage.
+    * Automatically load saved notes when the app is reopened.
+* Using GetX:
+    * Manage the app state using GetX to update the UI when notes aree added, edited, or deleted.
+    * Implement Reactive State Management to reflect real-time changes in notes.
+* Dark mode/light mode toggle:
+    * Use GetX to implement a toggle button on the home screen to switch between dark mode and light mode.
+    * The selected theme should be saved using GetStorage and automatically applied when the app is reopened.  
+
+__Note:__ Please send the APK and the Git link to Telegram.  
+##### Key points in completing this task:  
+* I have encountered a problem, that when I add so many tasks, the ones in the bottom becomes covered with the floating action button. So I have solved this issue by animating the floating action button as:  
+![animated floating action button](https://s11.gifyu.com/images/S1BQW.gif)  
+* I tried to make the button that toggles the theme as visually appealing as I could:  
+![toggle theme button](https://s1.gifyu.com/images/S1BQ5.gif)  
+* I have captilized the first letter of every sentence when inputting a task title or body:  
+![captilize letters](https://s1.gifyu.com/images/S1BQC.gif)

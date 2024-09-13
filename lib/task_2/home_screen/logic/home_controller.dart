@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:prokoders_flutter_tasks/task_2/components/toast.dart';
 import 'package:prokoders_flutter_tasks/task_2/home_screen/logic/tasks_animation_controller.dart';
+import 'package:prokoders_flutter_tasks/task_2/home_screen/screen_components/task_item.dart';
 import '../../models/task_model.dart';
-import '../home_screen.dart';
 
 class HomeController extends GetxController with GetTickerProviderStateMixin {
+  ///An object of Get storage
+  late GetStorage storage;
+
   ///A list to hold todos
   late RxList<Todo> tasks;
 
@@ -15,24 +19,87 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
   ///A controller that holds the text of the title of the todo
   late Rx<TextEditingController> titleController;
 
+  ///A controller that holds the text of the body of the todo
+  late Rx<TextEditingController> bodyController;
+
   ///A list to observe and modify the animation of todos list
   late final Rx<GlobalKey<AnimatedListState>> listKey;
+
+  ///A bool to control the visibility of Floating Action Button
+  late Rx<bool> showFab;
 
   ///Overriding [onInit] method to initialize the variables
   @override
   void onInit() {
+    storage = GetStorage();
     tasks = <Todo>[].obs;
     titleController = TextEditingController().obs;
+    bodyController = TextEditingController().obs;
     listKey = GlobalKey<AnimatedListState>().obs;
     taskAnimationController = <TasksAnimationControllers>[].obs;
+    showFab = true.obs;
     super.onInit();
+  }
+
+  ///Override [onReady] method in fetch the stored note once the controller has been initialized
+  @override
+  void onReady() {
+    fetchTasks();
+    super.onReady();
+  }
+
+  ///A method to fetch data from Get storage
+  void fetchTasks() async {
+    var t = storage.read('tasks');
+    if (t == null) return;
+    for (var e in t) {
+      tasks.add(Todo.fromJson(e));
+      listKey.value.currentState?.insertItem(
+          tasks.length - 1 < 0 ? 0 : tasks.length - 1,
+          duration: const Duration(milliseconds: 150));
+      taskAnimationController.add(TasksAnimationControllers());
+      //taskAnimationController[index].doneController.value.animateTo(0.5);
+      if (tasks.elementAt(tasks.length - 1).done) {
+        taskAnimationController
+            .elementAt(taskAnimationController.length - 1)
+            .doneController
+            .value
+            .animateTo(0.5);
+      }
+      await Future.delayed(
+        const Duration(milliseconds: 200),
+        () {
+          taskAnimationController
+              .elementAt(taskAnimationController.length - 1)
+              .titleController
+              .value
+              .forward();
+
+          taskAnimationController
+              .elementAt(taskAnimationController.length - 1)
+              .opacity
+              .value = 1.0;
+
+          taskAnimationController.refresh();
+        },
+      );
+    }
+  }
+
+  ///A method to store data in Get storage
+  void updateStorageTasks() {
+    storage.write('tasks', tasks);
   }
 
   ///A method to add a new unique task.
   ///It updates the screen by updating [tasks].
   ///It prevents adding the same task twice, and adding a task with empty title.
   ///It requires [context] in order to display a toast with error message (if any).
-  addTask({required BuildContext context, required String todoTitle}) async {
+  addTask({
+    required BuildContext context,
+    required String todoTitle,
+    required String todoBody,
+  }) async {
     if (todoTitle.isEmpty) {
       showToast(
           context: context,
@@ -50,12 +117,14 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
           color: Colors.red,
         );
         titleController.value.clear();
+        bodyController.value.clear();
         return;
       }
     }
 
-    Todo todo = Todo(title: todoTitle);
+    Todo todo = Todo(title: todoTitle, body: todoBody);
     tasks.add(todo);
+    updateStorageTasks();
     taskAnimationController.add(TasksAnimationControllers());
 
     listKey.value.currentState?.insertItem(
@@ -81,6 +150,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     );
 
     titleController.value.clear();
+    bodyController.value.clear();
   }
 
   ///A method to handle done animation.
@@ -109,6 +179,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     tasks[desiredTodoIndex].done = !tasks[desiredTodoIndex].done;
     tasks.refresh();
     _forwardDoneController(desiredTodoIndex, tasks[desiredTodoIndex]);
+    updateStorageTasks();
   }
 
   ///A method to delete a todo.
@@ -132,6 +203,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
 
     taskAnimationController.removeAt(desiredIndex);
     tasks.removeAt(desiredIndex);
+    updateStorageTasks();
   }
 
   ///A method to edit a task.
@@ -152,9 +224,16 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     taskAnimationController[desiredIndex].opacity.value = 1.0;
 
     tasks[desiredIndex].title = titleController.value.text;
+    tasks[desiredIndex].body = bodyController.value.text;
 
     titleController.value.clear();
+    bodyController.value.clear();
     tasks.refresh();
     taskAnimationController.refresh();
+  }
+
+  ///A method to toggle the Visibility of the floating action button
+  void toggleFab() {
+    showFab.value = !showFab.value;
   }
 }

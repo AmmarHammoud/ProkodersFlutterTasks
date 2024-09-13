@@ -48,7 +48,7 @@ I have used some external packages in order to ensure that the UI is visually ap
 I have forbidden adding a task with an empty title:  
 <img src="https://s11.gifyu.com/images/SooaL.gif" width="300" align="center"/>  
 and the case of inputing the same title twice:  
-<img src="https://s11.gifyu.com/images/Soofx.gif" width="300" align="center"/>
+<img src="https://s11.gifyu.com/images/Soofx.gif" width="300" align="center"/>  
 * __Events listening and auto UI updating:__  
 I have effectively implemeted `GetX` to ensure the UI updates whenever there is a change, see deleting a task example above.
 * __Clean, easy to edit, and reusable code:__  

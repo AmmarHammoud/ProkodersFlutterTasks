@@ -80,7 +80,9 @@ Objective: Create a a Flutter app for managing notes using GetX and GetStorage.
 ##### Key points in completing this task:  
 * I have encountered a problem, that when I add so many tasks, the ones in the bottom becomes covered with the floating action button. So I have solved this issue by animating the floating action button as:  
 <img src="https://s11.gifyu.com/images/S1BQW.gif" width="300" align="center"/>  
+
 * I tried to make the button that toggles the theme as visually appealing as I could:  
 <img src="https://s1.gifyu.com/images/S1BQ5.gif" width="300" align="center"/>  
+
 * I have captilized the first letter of every sentence when inputting a task title or body:  
 <img src="https://s1.gifyu.com/images/S1BQC.gif" width="300" align="center"/>  

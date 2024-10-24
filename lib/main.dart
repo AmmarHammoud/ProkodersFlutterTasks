@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:prokoders_flutter_tasks/task_2/home_screen/home_screen.dart';
 import 'package:prokoders_flutter_tasks/task_3/logic/app_controller.dart';
+import 'package:prokoders_flutter_tasks/task_4_e_commerce/onboarding/app_onboarding.dart';
+
 
 void main() async {
   await GetStorage.init();
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final appController =
-      Get.put<AppController>(AppController(), permanent: true);
+  Get.put<AppController>(AppController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      darkTheme: ThemeData.dark(),
+      //darkTheme: ThemeData.dark(),
       themeMode: appController.themeMode.value,
-      home: HomeScreen(),
+      home: const AppOnboarding(),
     );
   }
 }
